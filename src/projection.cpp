@@ -1,12 +1,15 @@
 #include "projection.h"
 #include <cmath>
+#include <numbers>
 
 void generateSinogram(
     const std::vector<std::vector<double>>& image,
     std::vector<std::vector<double>>& sinogram,
     int numAngles,
     int numSensors,
-    double dTheta, int length, double tStep, double r) {
+    int length, 
+    double tStep, 
+    double r) {
 
 
     int width = image[0].size();
@@ -15,10 +18,11 @@ void generateSinogram(
     double halfLength = numSensors / 2.0;
     double centerX = width / 2.0;
     double centerY = height / 2.0;
+    double dTheta = 2 * std::numbers::pi / numAngles;
 
         for (int i = 0; i < numAngles; ++i) {
-
-            double theta = i * dTheta;
+            
+            double theta = i * (2 * std::numbers::pi) / numAngles;
             double cosT = std::cos(theta);
             double sinT = std::sin(theta);
             
@@ -39,7 +43,7 @@ void generateSinogram(
                 double sx = normS * cosT;
                 double sy = normS * sinT;
 
-                for (float t = 0; t < maxDiag; t+=tStep){
+                for (double t = 0; t < maxDiag; t+=tStep){
                     
                     int x = std::round(centerX + rx + sx - t * sinT);
                     int y = std::round(centerY - ry + sy + t * cosT);

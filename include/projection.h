@@ -5,5 +5,7 @@ void generateSinogram(
     const std::vector<std::vector<double>>& image,
     std::vector<std::vector<double>>& sinogram,
     int numAngles,
-    int numSensors,
-    double dTheta, int length, double tStep, double r);
+    int numSensors, 
+    int length, 
+    double tStep, 
+    double r);

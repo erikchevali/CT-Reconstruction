@@ -57,9 +57,8 @@ int main() {
 
 
     // 2. Sinogram Setup
-    int numAngles = 180;    // How many views
+    int numAngles = 360;    // How many views
     int numSensors = 400;   // How wide the detector bar is
-    double dTheta = std::numbers::pi / 180.0; // 1 degree steps
     int length = 200;       // Physical size of detector
     double tStep = 0.5;     // Step size for ray marching
     double r = 200.0;       // Orbit radius
@@ -68,7 +67,7 @@ int main() {
     std::vector<std::vector<double>> sinogram(numAngles, std::vector<double>(numSensors, 0.0));
 
     std::cout << "Generating sinogram..." << std::endl;
-    generateSinogram(image, sinogram, numAngles, numSensors, dTheta, length, tStep, r);
+    generateSinogram(image, sinogram, numAngles, numSensors, length, tStep, r);
 
     std::cout << "Saving sinogram to data/sinogram.pgm..." << std::endl;
     saveSinogramPGM(sinogram, "../data/sinogram.pgm");
