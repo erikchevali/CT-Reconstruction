@@ -10,7 +10,7 @@ void generateSinogram(
     int length, 
     double tStep, 
     double r) {
-
+ 
 
     int width = image[0].size();
     int height = image.size();

@@ -9,4 +9,5 @@ add_executable(ct_reconstruct
     src/main.cpp
     src/phantom.cpp
     src/projection.cpp
+    src/reconstruction.cpp
 )

@@ -201,6 +201,30 @@ src/projection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ct_reconstruct.dir/build.make CMakeFiles/ct_reconstruct.dir/src/projection.cpp.s
 .PHONY : src/projection.cpp.s
 
+src/reconstruction.o: src/reconstruction.cpp.o
+.PHONY : src/reconstruction.o
+
+# target to build an object file
+src/reconstruction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ct_reconstruct.dir/build.make CMakeFiles/ct_reconstruct.dir/src/reconstruction.cpp.o
+.PHONY : src/reconstruction.cpp.o
+
+src/reconstruction.i: src/reconstruction.cpp.i
+.PHONY : src/reconstruction.i
+
+# target to preprocess a source file
+src/reconstruction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ct_reconstruct.dir/build.make CMakeFiles/ct_reconstruct.dir/src/reconstruction.cpp.i
+.PHONY : src/reconstruction.cpp.i
+
+src/reconstruction.s: src/reconstruction.cpp.s
+.PHONY : src/reconstruction.s
+
+# target to generate assembly for a file
+src/reconstruction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ct_reconstruct.dir/build.make CMakeFiles/ct_reconstruct.dir/src/reconstruction.cpp.s
+.PHONY : src/reconstruction.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -219,6 +243,9 @@ help:
 	@echo "... src/projection.o"
 	@echo "... src/projection.i"
 	@echo "... src/projection.s"
+	@echo "... src/reconstruction.o"
+	@echo "... src/reconstruction.i"
+	@echo "... src/reconstruction.s"
 .PHONY : help
 
 

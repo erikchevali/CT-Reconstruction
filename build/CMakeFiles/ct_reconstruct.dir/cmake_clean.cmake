@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ct_reconstruct.dir/src/phantom.cpp.o.d"
   "CMakeFiles/ct_reconstruct.dir/src/projection.cpp.o"
   "CMakeFiles/ct_reconstruct.dir/src/projection.cpp.o.d"
+  "CMakeFiles/ct_reconstruct.dir/src/reconstruction.cpp.o"
+  "CMakeFiles/ct_reconstruct.dir/src/reconstruction.cpp.o.d"
   "ct_reconstruct"
   "ct_reconstruct.pdb"
 )
