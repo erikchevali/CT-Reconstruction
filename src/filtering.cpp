@@ -52,3 +52,4 @@ std::vector<std::vector<double>> filteredSinogram(const std::vector<std::vector<
     }
 
     return filtered;
+}
