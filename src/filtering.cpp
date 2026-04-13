@@ -32,3 +32,14 @@ std::vector<double> idft(const std::vector<std::complex<double>>& freqs) {
     }
     return result;
 }
+
+// Apply Ram-Lak filter to a single sinogram row
+std::vector<double> ramLakFilter(const std::vector<double>& row) {
+    int N = row.size();
+    std::vector<std::complex<double>> freqs = dft(row);
+    for (int k = 0; k < N; k++) {
+        double freq = (k <= N / 2) ? k : N - k;
+        freqs[k] *= freq;
+    }
+    return idft(freqs);
+}
