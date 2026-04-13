@@ -4,6 +4,7 @@
 #include "phantom.h"
 #include "projection.h"
 #include "reconstruction.h"
+#include "filtering.h"
 
 void saveImagePGM(const std::vector<std::vector<double>>& image, const std::string& filename) {
     if (image.empty() || image[0].empty()) return;
