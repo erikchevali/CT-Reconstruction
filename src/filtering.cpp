@@ -43,3 +43,12 @@ std::vector<double> ramLakFilter(const std::vector<double>& row) {
     }
     return idft(freqs);
 }
+
+// Run the Ram-Lak filter on the entire sinogram
+std::vector<std::vector<double>> filteredSinogram(const std::vector<std::vector<double>>& sinogram) {
+    std::vector<std::vector<double>> filtered(sinogram.size(), std::vector<double>(sinogram[0].size()));
+    for (size_t row = 0; row < sinogram.size(); row++) {
+        filtered[row] = ramLakFilter(sinogram[row]);
+    }
+
+    return filtered;
