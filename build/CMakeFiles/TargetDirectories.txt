@@ -1,3 +1,0 @@
-/home/erikc/projects/CT-Reconstruction/build/CMakeFiles/ct_reconstruct.dir
-/home/erikc/projects/CT-Reconstruction/build/CMakeFiles/edit_cache.dir
-/home/erikc/projects/CT-Reconstruction/build/CMakeFiles/rebuild_cache.dir

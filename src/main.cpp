@@ -4,6 +4,7 @@
 #include "phantom.h"
 #include "projection.h"
 #include "reconstruction.h"
+#include "filtering.h"
 
 void saveImagePGM(const std::vector<std::vector<double>>& image, const std::string& filename) {
     if (image.empty() || image[0].empty()) return;
@@ -58,8 +59,11 @@ int main() {
     std::cout << "Saving sinogram to data/sinogram.pgm..." << std::endl;
     saveImagePGM(sinogram, "../data/sinogram.pgm");
 
+    std::cout << "Filtering sinogram..." << std::endl;
+    std::vector<std::vector<double>> filtSinogram = filteredSinogram(sinogram);
+    
     std::cout << "Generating result..." << std::endl;
-    reconstructImage(sinogram, result, numAngles, numSensors, length, tStep, r);
+    reconstructImage(filtSinogram, result, numAngles, numSensors, length, tStep, r);
 
     std::cout << "Saving result to data/result.pgm..." << std::endl;
     saveImagePGM(result, "../data/result.pgm");

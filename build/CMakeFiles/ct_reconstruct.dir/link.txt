@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/ct_reconstruct.dir/src/main.cpp.o CMakeFiles/ct_reconstruct.dir/src/phantom.cpp.o CMakeFiles/ct_reconstruct.dir/src/projection.cpp.o CMakeFiles/ct_reconstruct.dir/src/reconstruction.cpp.o -o ct_reconstruct 

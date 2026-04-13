@@ -10,4 +10,5 @@ add_executable(ct_reconstruct
     src/phantom.cpp
     src/projection.cpp
     src/reconstruction.cpp
+    src/filtering.cpp
 )
