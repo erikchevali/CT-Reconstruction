@@ -3,10 +3,11 @@
 # build the project
 cd ~/projects/CT-Reconstruction/build
 make
-cd ..
 
 # run the executable
-./build/ct_reconstruct
+./ct_reconstruct
+
+cd ..
 
 # open the results in infranview
 INFRANVIEW="/mnt/c/Program Files/IrfanView/i_view64.exe"
