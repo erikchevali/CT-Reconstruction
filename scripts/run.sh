@@ -1,7 +1,28 @@
 #!/bin/bash
 
+# make sure we are in the project root directory
+cd ~/projects/CT-Reconstruction
+
+# reconfigure the project if necessary, handle edge cases
+if [ "CMakeLists.txt" -nt "build/CMakeCache.txt" ] || [ ! -f "build/CMakeCache.txt" ]; then
+    echo "CMakeLists.txt is newer than CMakeCache.txt. Reconfiguring the project..."
+   
+    # Create a build directory if it doesn't exist
+    if [ ! -d "build" ]; then
+        mkdir build
+    fi
+
+    cd build
+    cmake ..
+    cd ..
+
+else
+    echo "CMakeCache.txt is up to date. Skipping CMake configuration."
+fi
+
+
 # build the project
-cd ~/projects/CT-Reconstruction/build
+cd build
 make
 
 # run the executable
