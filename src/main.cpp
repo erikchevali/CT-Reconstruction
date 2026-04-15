@@ -48,9 +48,9 @@ int main(int argc, char* argv[]) {
 
     // Sinogram Setup
     int numAngles = 360;    // How many views
-    int numSensors = 400;   // How wide the detector bar is
+    int numSensors = 400;   // How dense the detector bar is
     int length = 200;       // Physical size of detector
-    double tStep = 0.5;     // Step size for ray marching
+    double tStep = 0.25;     // Step size for ray marching
     double r = 200.0;       // Orbit radius
 
     // Preallocate vector images
