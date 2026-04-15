@@ -24,8 +24,13 @@ void saveImagePGM(const std::vector<std::vector<double>>& image, const std::stri
     file << "P2\n" << width << " " << height << "\n255\n";
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
+
+            // clip non-negative values for display
+            double rawVal = image[i][j];
+            if (rawVal < 0) rawVal = 0.0;
+
             // Scale based on the max value found in the data
-            int val = (maxVal > 0) ? static_cast<int>((image[i][j] / maxVal) * 255) : 0;
+            int val = (maxVal > 0) ? static_cast<int>((rawVal / maxVal) * 255) : 0;
             file << val << " ";
         }
         file << "\n";
