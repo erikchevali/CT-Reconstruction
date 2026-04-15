@@ -60,7 +60,7 @@ void generateOffCenterPhantom(std::vector<std::vector<double>>& image, int size)
                 image[i][j] = 1.0;
             }
 
-            if ((x * x + y * y <= 0.25) && (x * x + y * y >= 0.20)) {
+            if ((x * x + y * y <= 1.0) && (x * x + y * y >= 0.85)) {
                 image[i][j] = 1.0;
             }
         }

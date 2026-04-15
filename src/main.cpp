@@ -32,10 +32,16 @@ void saveImagePGM(const std::vector<std::vector<double>>& image, const std::stri
     }
 }
 
-int main() {
+int main(int argc, char* argv[]) {
     int size = 256;
 
-    // 2. Sinogram Setup
+    // default to phantom 1 if no argument is given
+    int phantomChoice = 1;
+    if (argc > 1) {
+        phantomChoice = std::stoi(argv[1]);
+    }
+
+    // Sinogram Setup
     int numAngles = 360;    // How many views
     int numSensors = 400;   // How wide the detector bar is
     int length = 200;       // Physical size of detector
@@ -47,8 +53,22 @@ int main() {
     std::vector<std::vector<double>> result(size, std::vector<double>(size, 0.0));
     std::vector<std::vector<double>> sinogram(numAngles, std::vector<double>(numSensors, 0.0));
 
+    // generate chosen phantom
     std::cout << "Generating phantom..." << std::endl;
-    generatePhantom(image, size);
+    switch (phantomChoice) {
+        case 1:
+            generatePhantom(image, size);
+            break;
+        case 2:
+            generateCirclePhantom(image, size);
+            break;
+        case 3:
+            generateOffCenterPhantom(image, size);
+            break;
+        default:
+            std::cerr << "Invalid phantom choice. Using default phantom." << std::endl;
+            generatePhantom(image, size);
+    }
 
     std::cout << "Saving phantom to data/phantom.pgm..." << std::endl;
     saveImagePGM(image, "../data/phantom.pgm");

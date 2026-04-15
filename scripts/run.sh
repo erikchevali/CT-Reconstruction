@@ -25,8 +25,11 @@ fi
 cd build
 make
 
+# get phantom input
+PHANTOM=${1:-1}
+
 # run the executable
-./ct_reconstruct
+./ct_reconstruct $PHANTOM
 
 cd ..
 
