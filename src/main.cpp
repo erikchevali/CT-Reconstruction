@@ -70,6 +70,14 @@ int main(int argc, char* argv[]) {
         case 3:
             generateOffCenterPhantom(image, size);
             break;
+        case 4:
+            std::cout << "Generating high contrast phantom..." << std::endl;
+            generateHighContrastPhantom(image, size);
+            break;
+        case 5:
+            std::cout << "Generating multi-object phantom..." << std::endl;
+            generateMultiObjectPhantom(image, size);
+            break;
         default:
             std::cerr << "Invalid phantom choice. Using default phantom." << std::endl;
             generatePhantom(image, size);
