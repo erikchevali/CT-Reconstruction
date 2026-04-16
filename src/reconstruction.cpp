@@ -12,17 +12,17 @@ void reconstructImage(
     double tStep, 
     double r) {
  
-    // find the dimensions of the sinogram
-    int width = sinogram[0].size();
-    int height = sinogram.size();
+    // find the dimensions of the resulting image
+    int width = result[0].size();
+    int height = result.size();
 
-    // calculate the longest path across the sinogram
+    // calculate the longest path across the image
     double maxDiag = std::sqrt(width * width + height * height);
 
     // half sensor number for normalization
     double halfLength = numSensors / 2.0;
 
-    // calculate the center of the sinogram
+    // calculate the center of the image
     double centerX = width / 2.0;
     double centerY = height / 2.0;
 
