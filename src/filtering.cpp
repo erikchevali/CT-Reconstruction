@@ -11,7 +11,7 @@ std::vector<std::complex<double>> dft(const std::vector<double>& signal) {
     for (int k = 0; k < N; k++) {
         result[k] = 0;
         for (int n = 0; n < N; n++) {
-            double angle = 2.0 * std::numbers::pi * k * n / N;
+            double angle = -2.0 * std::numbers::pi * k * n / N;
 
             result[k] += signal[n] * 
             std::complex<double>(std::cos(angle), std::sin(angle));
@@ -41,7 +41,7 @@ std::vector<double> ramLakFilter(const std::vector<double>& row) {
     std::vector<std::complex<double>> freqs = dft(row);
     for (int k = 0; k < N; k++) {
         double freq = (k <= N / 2) ? k : N - k;
-        double hann = 0.5 * (1 - std::cos(std::numbers::pi * freq / (N / 2)));
+        double hann = 0.5 * (1 + std::cos(std::numbers::pi * freq / (N / 2)));
         freqs[k] *= freq * hann;
     }
     return idft(freqs);
