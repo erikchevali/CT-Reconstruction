@@ -38,10 +38,6 @@ void saveImagePGM(const std::vector<std::vector<double>>& image, const std::stri
 }
 
 int main(int argc, char* argv[]) {
-
-    //std::vector<double> testSignal = {1.0, 0.0, -1.0, 0.0};
-    //auto filteredSignal = ramLakFilter(testSignal);
-
     int size = 256;
 
     // default to phantom 1 if no argument is given
