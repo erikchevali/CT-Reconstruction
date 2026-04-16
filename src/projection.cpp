@@ -53,17 +53,9 @@ void generateSinogram(
 
                 } 
 
-                sinogram[i][s] = raySum;
+                sinogram[s][i] = raySum;
               
             }
         }
 
 }
-
-
-
-
-
-
-
-   
