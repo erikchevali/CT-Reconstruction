@@ -53,7 +53,7 @@ void generateSinogram(
 
                 } 
 
-                sinogram[s][i] = raySum;
+                sinogram[i][s] = raySum;
               
             }
         }
