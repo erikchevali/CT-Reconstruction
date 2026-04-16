@@ -12,6 +12,7 @@ if [ "CMakeLists.txt" -nt "build/CMakeCache.txt" ] || [ ! -f "build/CMakeCache.t
         mkdir build
     fi
 
+    # reconfigure project
     cd build
     cmake ..
     cd ..
@@ -31,11 +32,11 @@ PHANTOM=${1:-1}
 # run the executable
 ./ct_reconstruct $PHANTOM
 
+# navigate back to project root
 cd ..
 
 # open the results in infranview
 INFRANVIEW="/mnt/c/Program Files/IrfanView/i_view64.exe"
-
 "$INFRANVIEW" "$(wslpath -w data/phantom.pgm)" &
 "$INFRANVIEW" "$(wslpath -w data/sinogram.pgm)" &
 "$INFRANVIEW" "$(wslpath -w data/result.pgm)" &

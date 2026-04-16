@@ -7,11 +7,12 @@ cd ~/projects/CT-Reconstruction
 if [ "CMakeLists.txt" -nt "build/CMakeCache.txt" ] || [ ! -f "build/CMakeCache.txt" ]; then
     echo "CMakeLists.txt is newer than CMakeCache.txt. Reconfiguring the project..."
    
-    # Create a build directory if it doesn't exist
+    # create a build directory if it doesn't exist
     if [ ! -d "build" ]; then
         mkdir build
     fi
 
+    # reconfigure project
     cd build
     cmake ..
     cd ..
@@ -25,28 +26,28 @@ fi
 cd build
 make
 
-# Create output directories for each phantom
+# create output directories for each phantom
 mkdir -p ../results
 
-echo "Running pipeline on all 5 phantoms..."
+echo "Running simulation on all 5 phantoms..."
 
-# Loop through all 5 phantoms
+# loop through all 5 phantoms
 for i in 1 2 3 4 5; do
     echo "Running phantom $i..."
     
-    # Run the pipeline
+    # run the simulation
     ./ct_reconstruct $i
 
-    # Check if output files were created
+    # check if output files were created
     if [ -f "../data/phantom.pgm" ] && [ -f "../data/sinogram.pgm" ] && [ -f "../data/result.pgm" ]; then
         echo "PASS: Phantom $i output files generated"
+        
         # Copy results to labeled files
         cp ../data/phantom.pgm ../results/phantom_$i.pgm
         cp ../data/sinogram.pgm ../results/sinogram_$i.pgm
         cp ../data/result.pgm ../results/result_$i.pgm
 
         # Convert PGM to PNG for web viewing
-        # The -auto-level flag helps if the PGM looks too dark
         convert ../results/phantom_$i.pgm ../results/phantom_$i.png
         convert ../results/sinogram_$i.pgm ../results/sinogram_$i.png
         convert ../results/result_$i.pgm ../results/result_$i.png
@@ -54,14 +55,14 @@ for i in 1 2 3 4 5; do
     else
         echo "FAIL: Phantom $i did not generate all output files"
     fi
-
 done
 
+# navigate back to project root
 cd ..
 
 echo "Generating HTML results page..."
 
-# Generate the HTML file
+# generate the HTML file
 cat > results/index.html << 'EOF'
 <!DOCTYPE html>
 <html>
@@ -91,7 +92,7 @@ cat > results/index.html << 'EOF'
         </tr>
 EOF
 
-# Add a row for each phantom
+# add a row for each phantom
 PHANTOM_NAMES=("" "Basic Shepp-Logan" "Circle" "Off-Center" "Contrast Test" "Multi-Object")
 
 for i in 1 2 3 4 5; do
@@ -113,7 +114,7 @@ EOF
 done
 
 
-# Close the HTML
+# close the HTML
 cat >> results/index.html << 'EOF'
     </table>
 </body>
@@ -121,10 +122,11 @@ cat >> results/index.html << 'EOF'
 EOF
 
 echo "Opening results in browser..."
-# Get the absolute Windows path for the index file
+
+# get the absolute Windows path for the index file
 WIN_PATH=$(wslpath -w "$(pwd)/results/index.html")
 
-# Use PowerShell to start the file (this is more robust than the 'start' command)
+# use PowerShell to start the file
 powershell.exe -Command "Start-Process '$WIN_PATH'"
 
 echo "Done! Check results/index.html"
