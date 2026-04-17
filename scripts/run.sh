@@ -35,10 +35,20 @@ PHANTOM=${1:-1}
 # navigate back to project root
 cd ..
 
-# open the results in infranview
+# open the results in infranview if it exists, otherwise convert
 INFRANVIEW="/mnt/c/Program Files/IrfanView/i_view64.exe"
-"$INFRANVIEW" "$(wslpath -w data/phantom.pgm)" &
-"$INFRANVIEW" "$(wslpath -w data/sinogram.pgm)" &
-"$INFRANVIEW" "$(wslpath -w data/result.pgm)" &
+if [-f "$INFRANVIEW"]; then
+    "$INFRANVIEW" "$(wslpath -w data/phantom.pgm)" &
+    "$INFRANVIEW" "$(wslpath -w data/sinogram.pgm)" &
+    "$INFRANVIEW" "$(wslpath -w data/result.pgm)" &
+else
+    echo "InfranView not found at:"
+    echo "$INFRANVIEW"
+    echo "Converting to pngs..."
+    convert data/phantom.pgm data/phantom.png
+    convert data/sinogram.pgm data/sinogram.png
+    convert data/result.pgm data/result.png
+    echo "Please open manually from data folder"
+fi
 
 
