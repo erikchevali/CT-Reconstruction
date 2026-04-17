@@ -139,11 +139,13 @@ INDEX_PATH="$PROJECT_ROOT/results/index.html"
 # open based on os
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
-    if grep -q Microsoft /proc/version; then
+    if [ -n "$WSL_DISTRO_NAME" ]; then
         # WSL
+        echo "wsl os found, opening browser.."
         WIN_PATH=$(wslpath -w "$INDEX_PATH")
         powershell.exe -Command "Start-Process \"$WIN_PATH\""
     else
+        echo "linux found"
         # Native Linux
         xdg-open "$INDEX_PATH"
     fi
