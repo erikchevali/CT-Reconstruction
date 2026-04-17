@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CT Reconstruction Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #1a1a1a; color: #ffffff; padding: 20px; }
+        h1 { color: #4a9edd; }
+        h2 { color: #aaaaaa; font-size: 14px; margin: 4px 0; }
+        table { border-collapse: collapse; width: 100%; }
+        th { background: #2a2a2a; padding: 12px; color: #4a9edd; text-align: center; }
+        td { padding: 10px; text-align: center; border: 1px solid #333; }
+        img { width: 180px; height: 180px; object-fit: contain; background: #000; }
+        .pass { color: #44ff44; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>CT Reconstruction Pipeline — Results</h1>
+    <p>All 5 phantoms processed through forward projection and filtered back-projection (Ram-Lak + Hann window)</p>
+    <table>
+        <tr>
+            <th>Phantom</th>
+            <th>Original</th>
+            <th>Sinogram</th>
+            <th>Reconstruction</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td><b>Basic Shepp-Logan</b></td>
+            <td><img src="phantom_1.png" alt="Phantom 1"></td>
+            <td><img src="sinogram_1.png" alt="Sinogram 1"></td>
+            <td><img src="result_1.png" alt="Result 1"></td>
+            <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><b>Circle</b></td>
+            <td><img src="phantom_2.png" alt="Phantom 2"></td>
+            <td><img src="sinogram_2.png" alt="Sinogram 2"></td>
+            <td><img src="result_2.png" alt="Result 2"></td>
+            <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><b>Off-Center</b></td>
+            <td><img src="phantom_3.png" alt="Phantom 3"></td>
+            <td><img src="sinogram_3.png" alt="Sinogram 3"></td>
+            <td><img src="result_3.png" alt="Result 3"></td>
+            <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><b>Contrast Test</b></td>
+            <td><img src="phantom_4.png" alt="Phantom 4"></td>
+            <td><img src="sinogram_4.png" alt="Sinogram 4"></td>
+            <td><img src="result_4.png" alt="Result 4"></td>
+            <td><span class="pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><b>Multi-Object</b></td>
+            <td><img src="phantom_5.png" alt="Phantom 5"></td>
+            <td><img src="sinogram_5.png" alt="Sinogram 5"></td>
+            <td><img src="result_5.png" alt="Result 5"></td>
+            <td><span class="pass">PASS</span></td>
+        </tr>
+    </table>
+</body>
+</html>
