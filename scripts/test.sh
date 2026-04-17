@@ -133,6 +133,27 @@ powershell.exe -Command "Start-Process '$WIN_PATH'"
 
 echo "Done! Check results/index.html"
 
+# store filepath of the html file
+INDEX_PATH="$PROJECT_ROOT/results/index.html"
 
+# open based on os
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+
+    if grep -q Microsoft /proc/version; then
+        # WSL
+        WIN_PATH=$(wslpath -w "$INDEX_PATH")
+        powershell.exe -Command "Start-Process \"$WIN_PATH\""
+    else
+        # Native Linux
+        xdg-open "$INDEX_PATH"
+    fi
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    open "$INDEX_PATH"
+
+fi
+
+echo "Done!"
 
 
