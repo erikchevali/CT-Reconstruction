@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # make sure we are in the project root directory
-cd ~/projects/CT-Reconstruction
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_ROOT"
 
 # reconfigure the project if necessary, handle edge cases
 if [ "CMakeLists.txt" -nt "build/CMakeCache.txt" ] || [ ! -f "build/CMakeCache.txt" ]; then

@@ -2,9 +2,12 @@
 
 echo "Setting up project folders..."
 
+# navigate to home directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_ROOT"
 
-# Create required directories if they don't exist
-cd ~/projects/CT-Reconstruction
+# create required directories if they don't exist
 mkdir -p data
 mkdir -p results
 mkdir -p build

@@ -3,4 +3,4 @@ build/
 *.pgm
 data/
 *.json
-results/
+build/
